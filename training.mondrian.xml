@@ -1,0 +1,190 @@
+<Schema name="training">
+  <Dimension visible="true" highCardinality="false" name="Employee dim" caption="&#21592;&#24037;">
+    <Hierarchy name="GENDER" visible="true" hasAll="true" primaryKey="EMPLOYEE_KEY">
+      <Table name="employee_dim">
+      </Table>
+      <Level name="GENDER" visible="true" column="GENDER" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#24615;&#21035;">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="POSITION" visible="true" hasAll="true" primaryKey="POSITION_CODE" primaryKeyTable="employee_dim">
+      <Join leftKey="POSITION_CODE" rightKey="POSITION_CODE">
+        <Table name="employee_dim">
+        </Table>
+        <Table name="emp_position_lookup">
+        </Table>
+      </Join>
+      <Level name="POSITION" visible="true" table="emp_position_lookup" column="POSITION_SC" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#32844;&#20301;">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="EMPLOYEE" visible="true" hasAll="true" primaryKey="EMPLOYEE_KEY" caption="&#21592;&#24037;">
+      <Table name="employee_dim">
+      </Table>
+      <Level name="MANAGER1" visible="true" column="MANAGER1" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="1&#32423;&#20027;&#31649;">
+      </Level>
+      <Level name="MANAGER2" visible="true" column="MANAGER2" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="2&#32423;&#20027;&#31649;">
+      </Level>
+      <Level name="MANAGER3" visible="true" column="MANAGER3" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="3&#32423;&#20027;&#31649;">
+      </Level>
+      <Level name="EMPLOYEE NAME" visible="true" column="EMPLOYEE_NAME" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#21592;&#24037;&#22995;&#21517;">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension visible="true" highCardinality="false" name="Order method dim" caption="&#35746;&#21333;&#26041;&#24335;">
+    <Hierarchy name="ORDER METHOD SC" visible="true" hasAll="true" primaryKey="ORDER_METHOD_KEY" caption="&#35746;&#21333;&#26041;&#24335;">
+      <Table name="order_method_dim">
+      </Table>
+      <Level name="ORDER METHOD SC" visible="true" column="ORDER_METHOD_SC" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#35746;&#21333;&#26041;&#24335;">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension visible="true" highCardinality="false" name="Product dim" caption="&#20135;&#21697;">
+    <Hierarchy name="PRODUCT BRAND" visible="true" hasAll="true" primaryKey="PRODUCT_KEY" caption="&#21697;&#29260;">
+      <Table name="product_dim">
+      </Table>
+      <Level name="PRODUCT BRAND" visible="true" column="PRODUCT_BRAND" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#21697;&#29260;">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="PRODUCT LINE" visible="true" hasAll="true" primaryKey="PRODUCT_KEY" caption="&#20135;&#21697;&#32447;">
+      <Table name="product_dim">
+      </Table>
+      <Level name="PRODUCT LINE" visible="true" column="PRODUCT_LINE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#20135;&#21697;&#32447;">
+      </Level>
+      <Level name="PRODUCT NAME" visible="true" column="PRODUCT_NAME" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#20135;&#21697;&#21517;&#31216;">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="PRODUCT TYPE" visible="true" hasAll="true" primaryKey="PRODUCT_KEY" caption="&#20135;&#21697;&#31867;&#22411;">
+      <Table name="product_dim">
+      </Table>
+      <Level name="PRODUCT TYPE" visible="true" column="PRODUCT_TYPE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#20135;&#21697;&#31867;&#22411;">
+      </Level>
+      <Level name="PRODUCT NAME" visible="true" column="PRODUCT_NAME" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#20135;&#21697;&#21517;&#31216;">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension visible="true" highCardinality="false" name="Promotion dim" caption="&#20419;&#38144;">
+    <Hierarchy name="CAMPAIGN" visible="true" hasAll="true" primaryKey="PROMOTION_KEY" caption="&#20419;&#38144;">
+      <Table name="promotion_dim">
+      </Table>
+      <Level name="CAMPAIGN CODE SC" visible="true" column="CAMPAIGN_CODE_SC" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#27963;&#21160;">
+      </Level>
+      <Level name="BUNDLE GROUP CODE SC" visible="true" column="BUNDLE_GROUP_CODE_SC" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#20419;&#38144;&#21253;">
+      </Level>
+      <Level name="PROMOTION NAME SC" visible="true" column="PROMOTION_NAME_SC" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#20419;&#38144;&#21517;&#31216;">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension visible="true" highCardinality="false" name="Region dim" caption="&#21306;&#22495;">
+    <Hierarchy name="Region" visible="true" hasAll="true" primaryKey="COUNTY_KEY" caption="&#21306;&#22495;">
+      <Table name="region_dim">
+      </Table>
+      <Level name="Country" visible="true" column="Country" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#22269;&#23478;">
+      </Level>
+      <Level name="Province" visible="true" column="Province" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#30465;&#20221;">
+      </Level>
+      <Level name="City" visible="true" column="City" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#22478;&#24066;">
+      </Level>
+      <Level name="County" visible="true" column="County" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#21306;&#21439;">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Lagd" visible="true" hasAll="true" primaryKey="COUNTY_KEY">
+      <Table name="region_dim">
+      </Table>
+      <Level name="Lagd" visible="true" column="Lagd" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#32428;&#24230;">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Lngd" visible="true" hasAll="true" primaryKey="COUNTY_KEY">
+      <Table name="region_dim">
+      </Table>
+      <Level name="Lngd" visible="true" column="Lngd" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#32463;&#24230;">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension visible="true" highCardinality="false" name="Rtl dim" caption="&#38646;&#21806;&#21830;">
+    <Hierarchy name="RETAILER" visible="true" hasAll="true" primaryKey="RETAILER_SITE_KEY" caption="&#38646;&#21806;&#21830;&#31867;&#22411;">
+      <Table name="rtl_dim">
+      </Table>
+      <Level name="RETAILER TYPE SC" visible="true" column="RETAILER_TYPE_SC" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#38646;&#21806;&#21830;&#31867;&#22411;">
+      </Level>
+      <Level name="RETAILER NAME" visible="true" column="RETAILER_NAME" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="&#38646;&#21806;&#21830;">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="TimeDimension" visible="true" highCardinality="false" name="Time dim" caption="&#26102;&#38388;">
+    <Hierarchy name="Time" visible="true" hasAll="true" primaryKey="DAY_KEY" caption="&#26102;&#38388;">
+      <Table name="time_dim">
+      </Table>
+      <Level name="YEAR" visible="true" column="YEAR" type="Numeric" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never" caption="&#24180;">
+        <Annotations>
+          <Annotation name="AnalyzerDateFormat">
+            <![CDATA[[yyyy]]]>
+          </Annotation>
+          <Annotation name="AnalyzerDateLocale">
+            <![CDATA[en]]>
+          </Annotation>
+        </Annotations>
+      </Level>
+      <Level name="QUARTER KEY" visible="true" column="QUARTER_KEY" type="Numeric" uniqueMembers="false" levelType="TimeQuarters" hideMemberIf="Never" caption="&#23395;&#24230;">
+        <Annotations>
+          <Annotation name="AnalyzerDateFormat">
+            <![CDATA[[yyyy].[yyyyq]]]>
+          </Annotation>
+          <Annotation name="AnalyzerDateLocale">
+            <![CDATA[en]]>
+          </Annotation>
+        </Annotations>
+      </Level>
+      <Level name="MONTH KEY" visible="true" column="MONTH_KEY" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never" caption="&#26376;&#20221;">
+        <Annotations>
+          <Annotation name="AnalyzerDateFormat">
+            <![CDATA[[yyyy].[yyyyq].[yyyyMM]]]>
+          </Annotation>
+          <Annotation name="AnalyzerDateLocale">
+            <![CDATA[en]]>
+          </Annotation>
+        </Annotations>
+      </Level>
+      <Level name="DAY KEY" visible="true" column="DAY_KEY" type="Numeric" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" caption="&#22825;">
+        <Annotations>
+          <Annotation name="AnalyzerDateFormat">
+            <![CDATA[[yyyy].[yyyyq].[yyyyMM].[yyyyMMdd]]]>
+          </Annotation>
+          <Annotation name="AnalyzerDateLocale">
+            <![CDATA[en]]>
+          </Annotation>
+        </Annotations>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="training" visible="true" cache="true" enabled="true">
+    <Table name="sales_fact">
+    </Table>
+    <DimensionUsage source="Employee dim" name="Employee dim" visible="true" foreignKey="EMPLOYEE_KEY" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Order method dim" name="Order method dim" visible="true" foreignKey="ORDER_METHOD_KEY" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Product dim" name="Product dim" visible="true" foreignKey="PRODUCT_KEY" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Promotion dim" name="Promotion dim" visible="true" foreignKey="PROMOTION_KEY" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Region dim" name="Region dim" visible="true" foreignKey="COUNTY_KEY" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Rtl dim" name="Rtl dim" visible="true" foreignKey="RETAILER_SITE_KEY" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Time dim" name="Time dim" visible="true" foreignKey="ORDER_DAY_KEY" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="GROSS MARGIN" column="GROSS_MARGIN" aggregator="avg" caption="&#27611;&#21033;&#29575;">
+    </Measure>
+    <Measure name="GROSS PROFIT" column="GROSS_PROFIT" aggregator="sum" caption="&#27611;&#21033;">
+    </Measure>
+    <Measure name="QUANTITY" column="QUANTITY" aggregator="sum" caption="&#25968;&#37327;">
+    </Measure>
+    <Measure name="SALE TOTAL" column="SALE_TOTAL" aggregator="sum" caption="&#37329;&#39069;">
+    </Measure>
+    <Measure name="UNIT COST" column="UNIT_COST" aggregator="avg" caption="&#21333;&#20301;&#25104;&#26412;">
+    </Measure>
+    <Measure name="UNIT PRICE" column="UNIT_PRICE" aggregator="avg" caption="&#21333;&#20301;&#20215;&#26684;">
+    </Measure>
+    <Measure name="UNIT SALE PRICE" column="UNIT_SALE_PRICE" aggregator="avg" caption="&#21333;&#20301;&#21806;&#20215;">
+    </Measure>
+  </Cube>
+</Schema>
